@@ -27,14 +27,20 @@ export function parseOperations(
 }
 
 export function composeOperation(operations: ParsedOperation[]) {
-  let composed: (input: unknown) => unknown = (input) => input;
-  for (let i = 0; i < operations.length; i++) {
-    const parsed = operations[i]!;
-    const prev = composed;
-    composed = (input: unknown) =>
-      parsed.operation.definition.operation(prev(input), parsed.args);
-  }
-  return composed;
+  return operations.reduce(
+    (fn, parsed) => (input: unknown) => {
+      const out = fn(input);
+      const isValid =
+        parsed.operation.definition.input.definition.validate(out);
+      if (!isValid)
+        throw new ParserError(
+          "TEMPLATE_EXECUTION_ERROR",
+          `Input for ${parsed.operation.key} invalid. Expected:${parsed.operation.definition.input.key}. Received raw: ${out}`
+        );
+      return parsed.operation.definition.operation(fn(input), parsed.args);
+    },
+    (input: unknown): unknown => input
+  );
 }
 
 function getOperationKey(operation: string) {
