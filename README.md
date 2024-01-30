@@ -2,6 +2,8 @@
 
 This is a small customizable typesafe template engine written in Typescript.
 
+[![SCKTn.gif](https://s13.gifyu.com/images/SCKTn.gif)](https://gifyu.com/image/SCKTn)
+
 ## Setup
 
 ## Quickstart
