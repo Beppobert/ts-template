@@ -1,0 +1,29 @@
+{
+  "name": "@beppobert/ts-template",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Philipp Dehler",
+  "license": "MIT",
+  "engines": {
+    "node": "<=18.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PhilippDehler/ts-template.git"
+  },
+  "keywords": [
+    "typescript",
+    "template",
+    "template engine"
+  ]
+}
