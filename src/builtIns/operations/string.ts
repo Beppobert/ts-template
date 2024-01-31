@@ -117,20 +117,6 @@ export const urlDecode = new OperationDefinition("urlDecode", {
   return: string,
 });
 
-export const base64Encode = new OperationDefinition("base64Encode", {
-  args: [],
-  operation: (_) => Buffer.from(_).toString("base64"),
-  input: string,
-  return: string,
-});
-
-export const base64Decode = new OperationDefinition("base64Decode", {
-  args: [],
-  operation: (_) => Buffer.from(_, "base64").toString("ascii"),
-  input: string,
-  return: string,
-});
-
 export const length = new OperationDefinition("length", {
   args: [],
   operation: (_) => _.length,
